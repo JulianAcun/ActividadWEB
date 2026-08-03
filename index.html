@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!-- Le dice al navegador que interprete este documento con las reglas de HTML5 -->
+<html lang="es">
+<!-- Etiqueta raíz: todo el documento vive dentro de <html>. lang="es" ayuda a lectores de pantalla
+     y a Google a saber que el contenido está en español -->
+
+<head>
+  <!-- Todo lo que va en <head> es metadata: configuración de la página, no contenido visible -->
+
+  <meta charset="UTF-8">
+  <!-- Codificación de caracteres UTF-8: sin esto, tildes y la "ñ" podrían verse como símbolos raros -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Le dice al navegador del celular que use el ancho real de la pantalla y no simule un
+       monitor de escritorio (que es el comportamiento por defecto en móviles) -->
+
+  <meta name="color-scheme" content="light">
+  <!-- Evita que el navegador "invierta" los colores en modo oscuro automático. Algunos navegadores
+       (y este mismo entorno de pruebas) intentan oscurecer páginas que no declaran su esquema de
+       color, y eso rompía el contraste de esta tabla -->
+
+  <title>Bitácora de Actividades</title>
+  <!-- Texto que aparece en la pestaña del navegador y en resultados de búsqueda -->
+
+  <style>
+    /* Los estilos van aquí mismo con <style> (en vez de un .css externo) porque esta es una sola
+       página pequeña que actúa como "portada"; las demás actividades sí usan un archivo .css
+       aparte porque tienen más contenido y así se reutiliza mejor */
+
+    body {
+      margin: 0;    /* El navegador por defecto le pone un margen a <body>; lo quitamos para controlar el espaciado nosotros */
+      padding: 0;
+      font-family: Arial, sans-serif; /* Lista de fuentes: usa Arial si existe, si no cae a cualquier sans-serif del sistema */
+      font-size: 16px;
+      line-height: 1.5; /* Separación entre líneas de texto, mejora la lectura */
+      color: #1a1a1a;
+      background-color: #ffffff;
+    }
+
+    header {
+      background-color: #000000; /* Negro de marca (paleta de TEKI) */
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      border-bottom: 4px solid #d7192d; /* Acento rojo de marca, marca la transición hacia el contenido */
+    }
+
+    h1, h2 {
+      /* Selector agrupado: aplica lo mismo a dos etiquetas distintas sin repetir código */
+      margin: 0; /* Quita el espacio en blanco que el navegador agrega arriba/abajo de los títulos por defecto */
+    }
+
+    .container {
+      /* Clase reutilizable para centrar y limitar el ancho del contenido en pantallas grandes */
+      max-width: 1000px;
+      margin: 0 auto; /* "auto" en los lados izquierdo/derecho centra el bloque horizontalmente */
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse; /* Sin esto cada celda dibuja su propio borde y se ven líneas dobles */
+      margin-top: 20px;
+    }
+
+    th, td {
+      /* th = celda de encabezado, td = celda de datos. Comparten el mismo estilo base */
+      border: 1px solid #cccccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    tr:nth-child(even) {
+      /* :nth-child(even) selecciona automáticamente la fila 2, 4, 6... sin necesitar una clase
+         "par"/"impar" puesta a mano en el HTML. Efecto "cebra" para leer mejor cada renglón */
+      background-color: #f5f5f5;
+    }
+
+    .activity-row {
+      cursor: pointer; /* Cambia el ícono del mouse a "manito" sobre toda la fila, dando a
+      entender que se puede hacer clic en cualquier parte, no solo en el texto del enlace */
+    }
+
+    .activity-row:hover {
+      /* Esta regla gana sobre tr:nth-child(even) porque una clase + :hover pesa más
+         (mayor especificidad) que una etiqueta + :nth-child */
+      background-color: #ffe1e4; /* Rojo muy claro de marca, para diferenciar el "hover" del gris cebra normal */
+    }
+
+    a {
+      color: #d7192d; /* Rojo de marca para que los enlaces resalten */
+      font-weight: bold;
+      text-decoration: none; /* Quita el subrayado por defecto de los enlaces */
+    }
+
+    a:hover {
+      /* :hover se activa mientras el mouse está encima del elemento */
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: 768px) {
+      /* Media query: estas reglas SOLO aplican cuando la pantalla mide 768px de ancho o menos
+         (celulares y tablets en vertical). Es la base del diseño "responsive" */
+      h1 {
+        font-size: 28px;
+      }
+
+      .container {
+        padding: 10px;
+      }
+
+      table {
+        font-size: 14px;
+      }
+
+      th, td {
+        padding: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <!-- <header>: encabezado de la página completa, aquí funciona como "portada" de la bitácora -->
+    <h1>Bitácora de Actividades PW</h1>
+    <h2>Desarrollado por: Julian Acuña</h2>
+  </header>
+
+  <div class="container">
+    <!-- <div> genérico sin significado propio, solo se usa para aplicarle la clase .container
+         y así centrar/limitar el ancho de la tabla -->
+    <table>
+      <!-- La tabla es la forma correcta en HTML de mostrar datos con relación fila-columna,
+           a diferencia de usar <div> con CSS para simular una tabla -->
+      <thead>
+        <!-- <thead> agrupa la fila de títulos de columna, separada del cuerpo de datos -->
+        <tr>
+          <th>Nombre Actividad</th>
+          <th>Enlace de la Actividad</th>
+          <th>Tema Personalizado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tbody> agrupa las filas con los datos reales de la tabla -->
+        <tr class="activity-row" data-href="actividad_01.html">
+          <!-- class="activity-row" + data-href: el script de más abajo usa este atributo para
+               saber a dónde llevar al usuario cuando hace clic en cualquier parte de la fila -->
+          <td>Primera Actividad</td>
+          <td><a href="actividad_01.html" target="_blank">actividad_01</a></td>
+          <!-- target="_blank" abre el enlace en una pestaña nueva, para no perder esta bitácora -->
+          <td>TEKI - Soporte Técnico</td>
+        </tr>
+        <tr class="activity-row" data-href="actividad_02.html">
+          <td>Segunda Actividad</td>
+          <td><a href="actividad_02.html" target="_blank">actividad_02</a></td>
+          <td>Rutas en Voge Rally 300</td>
+        </tr>
+        <tr class="activity-row" data-href="actividad_03.html">
+          <td>Tercera Actividad</td>
+          <td><a href="actividad_03.html" target="_blank">actividad_03</a></td>
+          <td>Pueblos Recorridos en Moto</td>
+        </tr>
+        <tr class="activity-row" data-href="actividad_04.html">
+          <td>Cuarta Actividad</td>
+          <td><a href="actividad_04.html" target="_blank">actividad_04</a></td>
+          <td>Rodando Fuerte - Revista de Motociclismo</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // Toma todas las filas marcadas con la clase "activity-row"
+    var filas = document.querySelectorAll('.activity-row');
+
+    filas.forEach(function (fila) {
+      fila.addEventListener('click', function (evento) {
+        // Si el clic fue directamente sobre el enlace <a>, no hacemos nada extra: dejamos que
+        // el navegador siga su comportamiento normal. Si no fuera por este "if", al hacer clic
+        // justo en el texto del enlace se abrirían DOS pestañas iguales (una por el <a> y otra
+        // por este script)
+        if (evento.target.tagName === 'A') {
+          return;
+        }
+
+        // data-href fue definido en el HTML de cada <tr>; dataset.href lo lee en JavaScript
+        window.open(fila.dataset.href, '_blank');
+      });
+    });
+  </script>
+</body>
+
+</html>

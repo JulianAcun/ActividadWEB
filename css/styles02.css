@@ -1,0 +1,169 @@
+/* ============================================
+   PALETA "AVENTURA": tonos oscuros de asfalto con
+   acento óxido/naranja, inspirados en la Voge Rally 300
+   ============================================ */
+
+* {
+  /* El selector universal "*" aplica a TODOS los elementos de la página */
+  box-sizing: border-box; /* Cambia cómo se calcula el ancho de una caja: con border-box, el
+  padding y el borde se descuentan DENTRO del ancho definido (width) en vez de sumarse por
+  fuera. Sin esto, una tarjeta con width:300px y padding:16px terminaría midiendo 332px reales */
+}
+
+body {
+  font-family: Arial, Verdana, sans-serif;
+  background-color: #14171a; /* Gris casi negro, simula el asfalto de una carretera */
+  color: #eae6dd; /* Texto claro tipo crema, para que contraste bien sobre el fondo oscuro */
+  margin: 0; /* Quita el margen por defecto que el navegador le pone a <body> */
+}
+
+.wrapper {
+  max-width: 960px; /* El contenido nunca crece más allá de 960px, aunque la pantalla sea más ancha */
+  margin: 0 auto; /* margin:0 arriba/abajo, "auto" a los lados = centra el bloque horizontalmente */
+  padding: 0 20px; /* Aire a los costados para que el texto no quede pegado al borde en pantallas angostas */
+}
+
+/* ============================================
+   ENCABEZADO Y NAVEGACIÓN
+   ============================================ */
+header {
+  border-bottom: 3px solid #c1440e; /* Línea naranja/óxido, marca visualmente el final del encabezado */
+  padding: 20px 0; /* Espacio interno arriba y abajo (el 0 es para los lados) */
+}
+
+header h1 {
+  /* Selector descendiente: solo el <h1> que está DENTRO de <header>, no cualquier h1 de la página */
+  margin: 0 0 10px 0; /* Shorthand arriba-derecha-abajo-izquierda: solo deja espacio abajo */
+  color: #ffffff;
+}
+
+.nota-fotos {
+  /* Aviso pequeño y discreto aclarando que las fotos son de referencia */
+  font-size: 80%;
+  font-style: italic;
+  color: #8a8579;
+  margin: 0 0 14px 0;
+}
+
+nav ul {
+  list-style: none; /* Quita los puntos/viñetas de la lista para que se vea como un menú, no como una lista de texto */
+  margin: 0;
+  padding: 0; /* Los <ul> traen padding-left por defecto (la sangría de las viñetas); lo quitamos porque ya no hay viñetas que sangrar */
+  display: flex; /* flex convierte a los <li> hijos en una fila horizontal en vez de apilarse uno debajo del otro */
+  gap: 18px; /* Espacio entre cada elemento del menú, sin necesitar margin en cada <li> */
+  flex-wrap: wrap; /* Si no caben todos en una fila (pantalla angosta), los que sobran bajan a la siguiente línea en vez de desbordarse */
+}
+
+nav a {
+  color: #c1440e;
+  text-decoration: none; /* Quita el subrayado azul por defecto de los enlaces */
+  font-weight: bold;
+  text-transform: uppercase; /* Convierte el texto a mayúsculas visualmente, SIN cambiar el texto real en el HTML */
+  font-size: 90%;
+}
+
+/* Selector agrupado: ":hover" (mientras el mouse está encima) y ".current" (la página activa)
+   comparten el mismo estilo, así que se combinan con una coma para no repetir código */
+nav a:hover,
+nav a.current {
+  /* .current marca visualmente en qué página está el usuario ahora mismo */
+  color: #ffffff;
+}
+
+/* ============================================
+   ARTÍCULOS DE RUTAS (section.courses)
+   ============================================ */
+.courses {
+  display: flex; /* Coloca los artículos uno junto al otro en fila, en vez de apilados */
+  gap: 20px; /* Separación entre tarjetas */
+  flex-wrap: wrap; /* En pantallas angostas las tarjetas bajan de línea y se acomodan en columna */
+  margin: 30px 0;
+}
+
+.courses article {
+  flex: 1 1 300px; /* Shorthand de flex-grow, flex-shrink y flex-basis: cada tarjeta puede
+  crecer (1) o encogerse (1) para llenar el espacio, pero su tamaño de partida nunca baja de 300px */
+  background-color: #1f2428; /* Fondo tipo "tarjeta", un poco más claro que el fondo general del body */
+  border-radius: 8px; /* Esquinas redondeadas en las 4 puntas */
+  padding: 16px;
+  border: 1px solid #2c3237;
+}
+
+.courses figure {
+  margin: 0 0 12px 0; /* <figure> trae margen por defecto del navegador; lo reemplazamos por uno controlado */
+}
+
+.courses img {
+  width: 100%; /* La imagen ocupa todo el ancho disponible de la tarjeta */
+  height: 180px; /* Alto fijo para que todas las tarjetas midan lo mismo aunque las fotos originales tengan proporciones distintas */
+  object-fit: cover; /* Recorta la imagen para llenar ese espacio de 100% x 180px SIN deformarla (el equivalente en CSS a "zoom y recorte" de una foto) */
+  border-radius: 6px;
+  display: block; /* Las imágenes son "inline" por defecto y dejan un pequeño espacio fantasma debajo; display:block lo elimina */
+}
+
+.courses figcaption {
+  font-size: 80%;
+  color: #c1440e;
+  margin-top: 6px;
+  text-align: center;
+}
+
+.courses hgroup h2 {
+  margin: 0;
+  color: #ffffff;
+}
+
+.courses hgroup h3 {
+  margin: 4px 0 10px 0;
+  font-weight: normal; /* Los <h3> son negrita por defecto; se quita para que se vea como subtítulo, no como otro título */
+  font-style: italic;
+  color: #b7b2a6;
+  font-size: 90%;
+}
+
+/* ============================================
+   COLUMNA LATERAL (aside)
+   ============================================ */
+aside {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+aside section {
+  flex: 1 1 220px;
+  background-color: #1f2428;
+  border-left: 3px solid #c1440e; /* Barra lateral de acento (solo en el lado izquierdo) para diferenciar este bloque del contenido principal */
+  padding: 14px 16px;
+  border-radius: 4px;
+}
+
+aside h2 {
+  font-size: 100%;
+  color: #ffffff;
+  margin-top: 0;
+}
+
+aside .otras-rutas a {
+  /* Selector descendiente + clase: los <a> que están dentro de un elemento con class="otras-rutas" */
+  display: block; /* Los <a> son "inline" por defecto (varios en una misma línea); block hace que cada enlace ocupe su propia línea, como una lista de pueblos */
+  color: #eae6dd;
+  text-decoration: none;
+  padding: 3px 0;
+}
+
+aside .otras-rutas a:hover {
+  color: #c1440e;
+}
+
+/* ============================================
+   PIE DE PÁGINA
+   ============================================ */
+footer {
+  text-align: center;
+  font-size: 80%;
+  color: #8a8579;
+  border-top: 1px solid #2c3237;
+  padding: 16px 0;
+}

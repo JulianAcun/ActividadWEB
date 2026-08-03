@@ -1,0 +1,141 @@
+/* ============================================
+   ESTILOS GENERALES DEL CUERPO DE LA PÁGINA
+   Paleta de marca TEKI: negro, rojo y blanco
+   ============================================ */
+
+/* Selector de ETIQUETA (element selector): "body" sin punto ni # aplica a la única
+   etiqueta <body> del documento. Estos estilos son la base que heredan casi todos los
+   demás elementos (por eso aquí se define la fuente y el color de texto por defecto) */
+body {
+  font-family: Arial, Verdana, sans-serif; /* Lista de fuentes en orden de preferencia: si Arial no está instalada, prueba Verdana, y si ninguna existe usa cualquier sans-serif del sistema */
+  font-size: 90%; /* Porcentaje relativo al tamaño de letra por defecto del navegador (normalmente 16px), así el texto se ve un poco más compacto */
+  color: #1a1a1a; /* Texto casi negro (no #000 puro) porque el negro absoluto sobre blanco cansa más la vista al leer párrafos largos */
+  background-color: #ffffff; /* Fondo blanco, color base de la marca TEKI */
+}
+
+/* Selector de etiqueta "h1": afecta solo al título principal */
+h1 {
+  color: #000000; /* Título principal en negro puro, para que contraste fuerte */
+  border-bottom: 4px solid #d7192d; /* Línea roja como acento de marca debajo del título (border-bottom = borde solo en el lado inferior) */
+  padding-bottom: 8px; /* Espacio entre el texto y la línea roja, para que no la toque directamente */
+  display: inline-block; /* Por defecto h1 ocupa TODO el ancho disponible (display:block); con inline-block la caja se ajusta al ancho real del texto, así el borde rojo no atraviesa toda la pantalla */
+}
+
+/* ============================================
+   LISTA DE SERVICIOS
+   ============================================ */
+li {
+  /* Aplica a cada <li> sin importar en qué <ul> u <ol> esté */
+  line-height: 1.6em; /* "em" es relativo al tamaño de letra del propio elemento: 1.6em = 1.6 veces la altura de la fuente, da aire entre líneas de la lista */
+}
+
+/* ============================================
+   TABLA DE HORARIOS POR SEDE
+   ============================================ */
+table {
+  border-spacing: 0px; /* Por defecto los navegadores dejan un pequeño espacio entre celdas; lo quitamos para que los bordes queden pegados y se vea una sola cuadrícula limpia */
+}
+
+/* Selector agrupado con COMA: "th, td" aplica la misma regla a dos etiquetas distintas
+   sin tener que escribir el bloque dos veces */
+th,
+td {
+  padding: 5px 30px 5px 10px; /* Shorthand de padding en orden arriba-derecha-abajo-izquierda: más espacio a la derecha para separar columnas */
+  font-size: 90%;
+  margin: 0px;
+  text-align: left; /* Alinea el texto a la izquierda (las tablas por defecto centran el contenido de los <th>) */
+  background-color: #f0f0f0; /* Gris muy claro, neutro dentro de la paleta blanco/negro/rojo */
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+}
+
+/* Selector DESCENDIENTE (con espacio): "tr.head th" selecciona los <th> que están
+   DENTRO de una fila <tr> que tenga la clase "head". No afecta a los <th> de otras filas */
+tr.head th {
+  /* Estilo especial para la fila de encabezado (nombres de las sedes) */
+  color: #ffffff;
+  background-color: #000000; /* Negro de marca para diferenciar visualmente el encabezado del resto de la tabla */
+  border-bottom: 2px solid #d7192d; /* Borde inferior rojo como acento, separa el encabezado del cuerpo */
+  text-align: center;
+  letter-spacing: 0.1em; /* Aumenta el espacio entre letras, le da un aire más "de marca"/formal al encabezado */
+}
+
+/* "tr.even td, tr.even th" combina selector de clase + descendiente + agrupación:
+   afecta tanto a los <td> como a los <th> de cualquier fila marcada con class="even" */
+tr.even td,
+tr.even th {
+  /* Alterna el color de fondo de las filas marcadas como "even" (efecto cebra), para que sea
+     más fácil seguir cada renglón con la vista sin perderse en la fila incorrecta */
+  background-color: #f5f5f5;
+}
+
+/* :first-child y :last-child son PSEUDOCLASES: seleccionan un elemento según su posición
+   entre sus hermanos, sin necesidad de agregarle una clase extra en el HTML */
+tr.head th:first-child {
+  border-top-left-radius: 5px; /* Redondea solo la esquina superior izquierda del encabezado */
+}
+
+tr.head th:last-child {
+  border-top-right-radius: 5px; /* Redondea solo la esquina superior derecha del encabezado */
+}
+
+/* ============================================
+   FORMULARIO DE AGENDAMIENTO DE CITA
+   ============================================ */
+fieldset {
+  width: 320px;
+  margin-top: 20px;
+  border: 1px solid #000000;
+  background-color: #ffffff; /* Fondo blanco para resaltar el formulario sobre el resto de la página */
+  line-height: 1.6em;
+}
+
+legend {
+  font-style: italic;
+  color: #d7192d; /* Rojo de marca para el título del formulario */
+}
+
+/* Selector de ATRIBUTO: "input[type='text']" solo selecciona los <input> cuyo atributo
+   type valga exactamente "text", dejando afuera los de type="submit" o type="radio" */
+input[type='text'] {
+  width: 140px;
+  border: 1px solid #999999;
+  padding: 2px;
+  outline: none; /* Quita el contorno azul que el navegador dibuja por defecto al hacer clic (ojo: si se quita, conviene compensar con otro indicador visual, como hacemos abajo con :focus) */
+}
+
+/* :focus se activa cuando el campo está seleccionado (el cursor parpadeando adentro);
+   :hover se activa mientras el mouse está encima. Se agrupan porque comparten el mismo estilo */
+input[type='text']:focus,
+input[type='text']:hover {
+  background-color: #f5f5f5;
+  border: 1px solid #d7192d; /* El borde se pone rojo, esa es la retroalimentación visual que reemplaza al outline que quitamos arriba */
+}
+
+input[type='submit'] {
+  border: 1px solid #000000;
+  background-color: #d7192d; /* Botón rojo, color principal de acento de la marca */
+  color: #ffffff;
+  border-radius: 5px; /* Esquinas redondeadas en las 4 puntas */
+  padding: 6px 14px;
+  margin-top: 10px;
+}
+
+input[type='submit']:hover {
+  /* Efecto al pasar el mouse: el botón cambia a negro para confirmarle al usuario que es "clickeable" */
+  background-color: #000000;
+  cursor: pointer; /* Cambia el ícono del mouse a "manito", aunque los input type=submit ya lo hacen por defecto, se deja explícito */
+}
+
+.title {
+  /* Selector de CLASE (con punto): se reutiliza en varias etiquetas <label> y <span> del formulario */
+  float: left; /* Saca el elemento del flujo normal y lo "flota" a la izquierda, permitiendo que el input quede a su derecha en la misma línea */
+  width: 160px; /* Ancho fijo para que todas las etiquetas midan lo mismo y los campos queden alineados en columna */
+  clear: left; /* Obliga a que cada nueva etiqueta empiece una línea nueva, evitando que "floten" una junto a la otra */
+}
+
+.submit {
+  width: 320px;
+  text-align: right; /* Alinea el botón "Agendar" a la derecha del formulario */
+}

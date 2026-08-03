@@ -1,0 +1,176 @@
+/* ============================================
+   PALETA "REVISTA DE RUTA": fondo oscuro tipo carretera
+   de noche con acento naranja/óxido, igual familia que
+   la actividad 02 para mantener coherencia visual
+   ============================================ */
+
+* {
+  box-sizing: border-box; /* padding y border se cuentan DENTRO del ancho definido, no se suman aparte */
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', Times, serif; /* Fuente con serifas, look "editorial" de revista, distinta a las otras páginas que usan Arial */
+  font-size: 90%;
+  color: #ffffff;
+  background: linear-gradient(160deg, #1c1f22, #2a2119);
+  /* linear-gradient crea una transición de color en vez de un color plano: aquí va de un gris
+     oscuro (#1c1f22) a un marrón oscuro (#2a2119) en un ángulo de 160°, simulando asfalto al
+     atardecer sin tener que cargar una imagen de fondo */
+}
+
+a {
+  color: #d99a5b;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffffff;
+}
+
+/* ============================================
+   ENCABEZADO FIJO
+   ============================================ */
+.header {
+  background-color: #0e0f10;
+  border-bottom: 3px solid #c1440e;
+  position: fixed; /* Saca el elemento del flujo normal de la página y lo "pega" a una posición
+  exacta respecto a la ventana (no respecto al resto del contenido), por eso se queda visible
+  aunque el usuario haga scroll hacia abajo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50; /* Cuando varios elementos podrían superponerse, z-index decide cuál queda
+  "encima": números más altos ganan. 50 asegura que el header quede sobre el contenido normal
+  (que tiene z-index automático, equivalente a 0) */
+}
+
+.header-inner {
+  max-width: 960px;
+  margin: 0 auto; /* Centra horizontalmente el contenido del header dentro de la barra completa */
+  padding: 18px 20px;
+  display: flex;
+  align-items: center; /* Centra verticalmente el logo y el menú entre sí */
+  justify-content: space-between; /* Empuja el logo a la izquierda y el menú a la derecha, con el espacio sobrante en el medio */
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-family: Georgia, serif;
+  font-weight: bold;
+  font-size: 150%;
+  letter-spacing: 0.1em; /* Separa un poco las letras, look de logo/marca */
+  color: #ffffff;
+}
+
+.nav {
+  font-size: 85%;
+}
+
+/* ============================================
+   CONTENEDOR GENERAL
+   ============================================ */
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px 30px 20px;
+}
+
+.header-spacer {
+  height: 90px; /* Alto aproximado del header fijo: como .header tiene position:fixed, ya NO
+  ocupa espacio real en el documento, así que sin este "empujón" el contenido de más arriba
+  quedaría tapado detrás de la barra */
+}
+
+/* ============================================
+   ARTÍCULO PRINCIPAL DESTACADO
+   ============================================ */
+.main-story h1 {
+  font-size: 200%;
+  text-transform: uppercase;
+  line-height: 1.2em;
+  margin-top: 0;
+}
+
+.main-story .date {
+  font-family: Arial, Helvetica, sans-serif; /* Fuente distinta a la serifada del resto, para diferenciar la fecha como un dato/etiqueta, no como texto editorial */
+  font-size: 75%;
+  color: #d99a5b;
+  letter-spacing: 0.1em;
+}
+
+.main-story .intro p {
+  line-height: 1.6em;
+}
+
+/* ============================================
+   CUADRÍCULA "MÁS RUTAS"
+   ============================================ */
+.more-articles {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  /* rgba() es como rgb() pero con un cuarto valor (alpha) que controla la transparencia:
+     0 es invisible, 1 es opaco. 0.2 = una línea blanca casi transparente, sutil sobre el fondo oscuro */
+  padding-top: 20px;
+  margin-top: 20px;
+  display: grid; /* CSS Grid: a diferencia de flexbox (que acomoda en una sola fila/columna),
+  grid organiza el contenido en una cuadrícula de filas Y columnas al mismo tiempo */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* Crea tantas columnas como quepan ("auto-fit"), donde cada una mide como mínimo 200px y
+     como máximo se reparte el espacio sobrante en partes iguales ("1fr" = 1 fracción). Es lo
+     que hace que las tarjetas se reacomoden solas según el ancho de la pantalla, sin media queries */
+  gap: 20px;
+}
+
+.more-articles h2 {
+  text-transform: uppercase;
+  font-size: 120%;
+  margin-top: 0;
+  grid-column: 1 / -1; /* Dentro de una grid, esto hace que el título ocupe TODAS las columnas
+  (de la línea 1 a la última, "-1") en vez de comportarse como una tarjeta más de la cuadrícula */
+}
+
+.nota-fotos {
+  /* Aviso pequeño y discreto aclarando que las fotos son de referencia */
+  font-size: 80%;
+  font-style: italic;
+  color: #b7b2a6;
+  margin: -10px 0 10px 0;
+  grid-column: 1 / -1; /* Igual que el h2 de arriba: el aviso también ocupa todo el ancho de la cuadrícula */
+}
+
+.article-card img {
+  width: 100%;
+  height: 125px;
+  object-fit: cover; /* Recorta la imagen para llenar el espacio de la tarjeta sin deformarla */
+  border-radius: 4px;
+  display: block;
+}
+
+.article-card p {
+  font-size: 90%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 0;
+}
+
+.article-card p:last-child {
+  /* :last-child selecciona el último <p> dentro de cada tarjeta, para quitarle la línea
+     divisoria y que no quede un borde suelto al final */
+  border-bottom: none;
+}
+
+/* ============================================
+   PIE DE PÁGINA
+   ============================================ */
+.footer {
+  background: rgba(0, 0, 0, 0.4); /* Negro semitransparente: dejar ver un poco del degradado del body detrás, en vez de un negro sólido */
+  padding: 12px 20px;
+}
+
+.footer p {
+  max-width: 960px;
+  margin: 0 auto;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 75%;
+  text-align: right;
+  color: #b7b2a6;
+}

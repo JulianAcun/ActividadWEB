@@ -1,0 +1,187 @@
+/* ============================================
+   PALETA "PUEBLOS DE BOYACÁ/CUNDINAMARCA":
+   tonos tierra y verdes, inspirados en el paisaje
+   ============================================ */
+* {
+  box-sizing: border-box; /* padding y border se cuentan DENTRO del ancho definido, no se suman aparte */
+}
+
+body {
+  font-family: Arial, Verdana, sans-serif;
+  background-color: #f5f0e6; /* Beige claro, como el empedrado colonial de Villa de Leyva */
+  color: #2f2a22;
+  margin: 0;
+}
+
+header,
+main,
+footer {
+  /* Selector agrupado: los tres bloques principales de la página comparten el mismo ancho
+     máximo y quedan centrados, como si fueran un ".wrapper" repetido tres veces */
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header {
+  border-bottom: 3px solid #6b7a4f; /* Verde oliva de acento, separa visualmente el encabezado del contenido */
+  padding-top: 20px;
+  padding-bottom: 12px;
+  margin-bottom: 0;
+}
+
+header h1 {
+  color: #2f2a22;
+  margin: 0 0 8px 0;
+}
+
+nav ul {
+  list-style: none; /* Quita los puntos de la lista de navegación */
+  display: flex; /* Pone los <li> en fila en vez de uno debajo del otro */
+  gap: 16px;
+  margin: 0;
+  padding: 0; /* Quita la sangría por defecto que traen las listas */
+}
+
+nav a {
+  color: #a8541f; /* Terracota/óxido para los enlaces, combina con el paisaje de tierra */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  /* Al pasar el mouse por encima aparece el subrayado, como pista de que es "clickeable" */
+  text-decoration: underline;
+}
+
+/* ============================================
+   HERO: foto de portada con texto superpuesto
+   ============================================ */
+main {
+  padding-top: 0;
+  padding-bottom: 10px;
+}
+
+.hero {
+  /* .hero no lleva max-width propio: se deja "ancho completo" a propósito (ver margin negativo
+     abajo) para que la foto llegue de borde a borde de la pantalla, mientras el resto del
+     contenido sigue centrado con los 900px heredados de <main> */
+  margin: 0 -20px 30px -20px; /* Márgenes negativos a los lados: "cancelan" el padding de 20px
+  del <main> solo para este bloque, dejando que el fondo llegue hasta el borde de la ventana */
+  min-height: 260px;
+  background-image: linear-gradient(180deg, rgba(20, 15, 5, 0.15), rgba(20, 15, 5, 0.75)),
+    url('../images/villa_de_leyva.jpg');
+  /* Se pueden apilar varios fondos separados por comas: el navegador dibuja primero el de
+     ARRIBA en la lista. Aquí el degradado queda encima de la foto, oscureciéndola gradualmente
+     de arriba hacia abajo para que el texto blanco de abajo sea legible */
+  background-size: cover; /* La imagen se agranda/recorta para cubrir todo el bloque sin deformarse ni dejar espacios vacíos */
+  background-position: center;
+  display: flex;
+  align-items: flex-end; /* Empuja el contenido de texto hacia la parte inferior del hero */
+}
+
+.hero-overlay {
+  padding: 24px 20px;
+  color: #ffffff;
+}
+
+.hero-kicker {
+  /* "kicker" es el término de diseño editorial para el textito corto encima de un título
+     (aquí "Ruta destacada"), suele ir en mayúsculas y más pequeño que el título principal */
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 80%;
+  color: #e7c9a0;
+  margin-bottom: 4px;
+}
+
+.hero-overlay h2 {
+  margin: 0;
+  font-size: 200%;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* Sombra detrás del texto para que siga siendo legible incluso sobre zonas más claras de la foto */
+}
+
+/* ============================================
+   TARJETAS DE INFORMACIÓN (antes eran <p> sueltos)
+   ============================================ */
+.info-grid {
+  display: grid; /* CSS Grid: organiza las tarjetas en filas y columnas a la vez, a diferencia de flexbox que solo maneja una dirección */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* Tantas columnas como quepan, mínimo 200px cada una; si sobra espacio se reparte en
+     partes iguales entre las columnas existentes ("1fr") */
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.info-card {
+  background-color: #ffffff;
+  border: 1px solid #e3dbc8;
+  border-left: 4px solid #6b7a4f; /* Barra de acento a la izquierda, mismo recurso visual que la columna lateral de la actividad 02 */
+  border-radius: 6px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column; /* Apila la etiqueta y el valor en dos líneas dentro de la misma tarjeta */
+  gap: 4px;
+}
+
+.info-card-wide {
+  grid-column: span 2;
+  /* "span 2" hace que esta tarjeta ocupe 2 columnas de la cuadrícula en vez de 1, útil porque
+     su contenido (la lista de pueblos) es más largo que el de las otras tarjetas */
+}
+
+.info-label {
+  font-size: 75%;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b7a4f;
+  font-weight: bold;
+}
+
+.info-value {
+  font-size: 105%;
+  line-height: 1.5em;
+}
+
+/* ============================================
+   SECCIÓN DEL MAPA
+   ============================================ */
+.map-section h2 {
+  color: #2f2a22;
+  margin-bottom: 12px;
+}
+
+.map-section figure {
+  margin: 0;
+  background-color: #ffffff;
+  border: 1px solid #e3dbc8;
+  border-radius: 8px;
+  padding: 10px;
+  display: inline-block; /* La tarjeta se ajusta al ancho del mapa en vez de estirarse a todo el ancho de la página */
+}
+
+iframe {
+  border: 0; /* Los iframes traen un borde 3D por defecto en algunos navegadores; se quita porque ya lo reemplaza el marco de la tarjeta */
+  border-radius: 4px;
+  max-width: 100%; /* Si la pantalla es más angosta que el ancho fijo del iframe (450px), este
+  se encoge para no desbordar la página ni obligar a hacer scroll horizontal */
+  display: block;
+}
+
+/* ============================================
+   PIE DE PÁGINA
+   ============================================ */
+footer {
+  margin-top: 30px;
+  border-top: 1px solid #d8cfba;
+  padding-top: 12px;
+  padding-bottom: 20px;
+  font-size: 90%;
+}
+
+footer nav ul {
+  /* Selector encadenado de tres niveles: el <ul> dentro del <nav> dentro del <footer>,
+     así este ajuste de margen no afecta al <nav> del <header> */
+  margin-top: 8px;
+}
