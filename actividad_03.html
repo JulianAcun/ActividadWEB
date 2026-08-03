@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rutas en moto, Voge Rally 300, pueblos cerca de Bogotá, Colombia" />
+  <!-- meta description: resumen corto de la página que usan los buscadores (Google) para
+       mostrar debajo del título en los resultados de búsqueda. No se ve en la página misma -->
+  <meta name="color-scheme" content="light">
+  <!-- Evita que el navegador aplique modo oscuro automático, ya que esta página usa un fondo claro a propósito -->
+  <title>Pueblos Recorridos en Moto</title>
+  <link rel="stylesheet" href="./css/styles03.css" />
+</head>
+
+<body>
+  <header>
+    <h1>Pueblos Recorridos en Moto</h1>
+    <nav>
+      <ul>
+        <li><a href="actividad_02.html" title="Ver las rutas en detalle">Rutas</a></li>
+        <!-- El atributo "title" muestra un pequeño texto flotante (tooltip) cuando el mouse
+             se queda quieto sobre el enlace, dando contexto extra sin ocupar espacio visible -->
+        <li><a href="" title="Ir a redes sociales">Redes Sociales</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- <main>: envuelve el contenido PRINCIPAL y único de esta página en particular (a
+         diferencia del <header> y <footer>, que se repiten en varias páginas del sitio).
+         Solo puede haber un <main> por página -->
+
+    <section class="hero">
+      <!-- .hero: sección de portada grande con foto de fondo, muy común en sitios de viajes/rutas
+           para dar contexto visual inmediato antes del texto -->
+      <div class="hero-overlay">
+        <!-- .hero-overlay: capa semitransparente sobre la foto para que el texto blanco de
+             encima siga siendo legible aunque la foto sea clara -->
+        <p class="hero-kicker">Ruta destacada</p>
+        <h2>Villa de Leyva, Boyacá</h2>
+      </div>
+    </section>
+
+    <div class="info-grid">
+      <!-- .info-grid: reemplaza los antiguos párrafos sueltos por tarjetas cortas tipo
+           "ficha técnica", más fáciles de leer de un vistazo que un bloque de texto -->
+      <div class="info-card">
+        <span class="info-label">Ruta destacada</span>
+        <span class="info-value">Villa de Leyva, Boyacá, Colombia</span>
+      </div>
+      <div class="info-card">
+        <span class="info-label">Distancia desde Bogotá</span>
+        <span class="info-value">Aprox. 147 km</span>
+      </div>
+      <div class="info-card info-card-wide">
+        <!-- .info-card-wide: esta tarjeta tiene más texto (la lista de pueblos), así que
+             ocupa dos columnas de la cuadrícula en vez de una sola (ver CSS) -->
+        <span class="info-label">Otros pueblos recorridos</span>
+        <span class="info-value">Sibaté, Guatavita, La Calera, Guasca, Sesquilé, Usme (pueblo), Chía y Zipaquirá</span>
+      </div>
+    </div>
+
+    <section class="map-section">
+      <h2>Cómo llegar</h2>
+      <figure>
+        <!-- <figure> agrupa el mapa como una unidad de contenido "ilustrativo", igual que se
+             usaría para agrupar una imagen -->
+        <iframe title="Ubicación de Villa de Leyva, Boyacá" width="450" height="350"
+          src="https://www.google.com/maps?q=Villa+de+Leyva,+Boyaca,+Colombia&amp;output=embed"
+          loading="lazy">
+        </iframe>
+        <!-- <iframe> ("inline frame") incrusta OTRA página web completa dentro de esta, como una
+             ventana dentro de la ventana. Aquí carga la vista de Google Maps ya centrada en
+             Villa de Leyva gracias al parámetro "q=" en la URL (query = qué buscar) y
+             "output=embed" (le pide a Maps la versión pensada para incrustarse, sin su
+             interfaz completa). Se usa "https://www.google.com/..." (seguro y dominio principal)
+             en vez de una URL "http://" regional, porque esas variantes antiguas a veces
+             muestran una pantalla de consentimiento de cookies que no se puede aceptar dentro
+             de un iframe y el mapa queda en blanco. El atributo "title" es obligatorio para
+             accesibilidad: describe qué contenido trae el iframe para quien use un lector de
+             pantalla; "loading='lazy'" le dice al navegador que cargue el mapa solo cuando el
+             usuario esté por verlo en pantalla, en vez de apenas se abre la página -->
+      </figure>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <i>Rutas en Voge Rally 300</i></p>
+    <!-- <i> pone el texto en cursiva; &copy; imprime el símbolo © -->
+    <nav>
+      <!-- Segundo <nav>: una página puede tener varios bloques de navegación (el del menú
+           principal arriba, y este de "anterior/siguiente" al final) -->
+      <ul>
+        <li><a href="actividad_02.html" title="Ir a la actividad anterior">Anterior</a></li>
+        <li><a href="actividad_04.html" title="Ir a la siguiente actividad">Siguiente</a></li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+
+</html>
