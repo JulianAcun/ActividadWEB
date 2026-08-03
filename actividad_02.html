@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Codificación de caracteres, para que tildes y "ñ" se vean bien -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Adapta el ancho de la página al del dispositivo (celular, tablet, PC) -->
+  <meta name="color-scheme" content="dark">
+  <!-- Le avisa al navegador que ESTA página está diseñada intencionalmente en modo oscuro,
+       así no intenta "corregirla" aplicando su propio modo oscuro automático encima -->
+  <title>Rutas en Voge Rally 300</title>
+  <link rel="stylesheet" href="./css/styles02.css" />
+  <!-- Trae el CSS externo que le da el estilo oscuro/aventura a esta página -->
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- .wrapper: <div> genérico (sin significado semántico propio) que solo se usa para
+         aplicarle la clase .wrapper y así centrar y limitar el ancho de todo el contenido
+         mediante CSS (ver max-width y margin:auto en styles02.css) -->
+
+    <header>
+      <!-- <header>: encabezado de la página, agrupa el título y la navegación principal.
+           Es un elemento SEMÁNTICO de HTML5: le dice al navegador y a los lectores de
+           pantalla "esto es el encabezado", a diferencia de usar un <div> genérico -->
+      <h1>Rutas en Voge Rally 300</h1>
+      <p class="nota-fotos">
+        <!-- Aviso honesto: las fotos de la moto son de referencia del modelo, no fueron tomadas en cada lugar -->
+        Las fotos de la moto son de referencia del modelo (no fueron tomadas exactamente en cada lugar).
+      </p>
+      <nav>
+        <!-- <nav>: bloque de enlaces de navegación del sitio. Al usar <nav> en vez de un
+             <div> cualquiera, los lectores de pantalla pueden saltar directo al menú -->
+        <ul>
+          <li><a href="" class="current">inicio</a></li>
+          <!-- class="current" marca visualmente en qué página está el usuario ahora mismo
+               (se define un color distinto para .current en el CSS) -->
+          <li><a href="">galería</a></li>
+          <li><a href="">contacto</a></li>
+          <li><a href="actividad_01.html">Actividad 01</a></li>
+          <li><a href="actividad_03.html">Actividad 03</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="courses">
+      <!-- <section class="courses">: agrupa un conjunto de publicaciones relacionadas (las
+           rutas). Se reutilizó el nombre de clase "courses" del ejemplo original (cursos de
+           cocina) porque cumple la misma función: una cuadrícula de tarjetas -->
+
+      <article>
+        <!-- <article>: cada ruta es contenido independiente y autocontenido, es decir,
+             tendría sentido aunque se sacara de esta página y se publicara sola (por
+             ejemplo, compartida en redes sociales). Por eso cada ruta es su propio <article>
+             y no simplemente un <div> -->
+        <figure>
+          <!-- <figure>: agrupa una imagen junto con su leyenda (<figcaption>) como una sola
+               unidad, para que el navegador y los lectores de pantalla sepan que están
+               relacionadas -->
+          <img src="./images/villa_de_leyva.jpg" alt="Voge Rally 300, foto de referencia del modelo" />
+          <!-- El atributo "alt" describe la imagen en palabras: lo usan los lectores de
+               pantalla para usuarios con discapacidad visual, y también se muestra si la
+               imagen no llega a cargar -->
+          <figcaption>Voge Rally 300 (foto de referencia)</figcaption>
+          <!-- <figcaption>: texto que describe/acompaña a la imagen de la figura -->
+        </figure>
+        <hgroup>
+          <!-- <hgroup>: agrupa un título y su subtítulo como una sola unidad temática,
+               dejando claro que el h3 complementa al h2 y no es un tema aparte -->
+          <h2>Ruta a Villa de Leyva</h2>
+          <h3>Empedrado colonial y curvas de montaña</h3>
+        </hgroup>
+        <p>
+          Cerca de 150 km desde Bogotá por vía pavimentada y algunos tramos
+          destapados. La Voge Rally 300 se mueve muy bien entre las curvas
+          de la cordillera y en el empedrado del centro histórico.
+        </p>
+      </article>
+
+      <article>
+        <figure>
+          <img src="./images/guatavita.jpg" alt="Voge Rally 300, foto de referencia del modelo" />
+          <figcaption>Voge Rally 300 (foto de referencia)</figcaption>
+        </figure>
+        <hgroup>
+          <h2>Ruta a Guatavita</h2>
+          <h3>Mito muisca y carretera destapada</h3>
+        </hgroup>
+        <p>
+          Una ruta corta ideal para medio día, con tramos de tierra que
+          ponen a prueba la suspensión de la moto y un mirador espectacular
+          de la laguna sagrada muisca.
+        </p>
+      </article>
+
+      <article>
+        <figure>
+          <img src="./images/zipaquira.jpg" alt="Voge Rally 300, foto de referencia del modelo" />
+          <figcaption>Voge Rally 300 (foto de referencia)</figcaption>
+        </figure>
+        <hgroup>
+          <h2>Ruta a Zipaquirá</h2>
+          <h3>La Catedral de Sal en dos ruedas</h3>
+        </hgroup>
+        <p>
+          Ruta corta y muy transitada, ideal para principiantes en la moto.
+          Vale la pena bajarse a recorrer la Catedral de Sal antes de volver
+          a Bogotá.
+        </p>
+      </article>
+    </section>
+
+    <aside>
+      <!-- <aside>: contenido relacionado con la página pero secundario respecto al contenido
+           principal (las rutas destacadas de arriba); por eso va en una columna aparte -->
+      <section class="otras-rutas">
+        <!-- Un <aside> puede contener varias <section> internas cuando agrupa temas
+             distintos, aquí "otras rutas" y "sígueme" son dos bloques independientes -->
+        <h2>Otros Pueblos Recorridos</h2>
+        <a href="">Sibaté</a>
+        <a href="">La Calera</a>
+        <a href="">Guasca</a>
+        <a href="">Sesquilé</a>
+        <a href="">Usme (pueblo)</a>
+        <a href="">Chía</a>
+        <!-- Estos href="" quedan vacíos a propósito (como en el material de referencia del
+             profesor): son enlaces de ejemplo, no apuntan a ninguna página real todavía -->
+      </section>
+      <section class="contact-details">
+        <h2>Sígueme</h2>
+        <p>Voge Rally 300<br />
+          Rodando por Cundinamarca y Boyacá<br />
+          Colombia</p>
+      </section>
+    </aside>
+
+    <footer>
+      <!-- <footer>: pie de página, normalmente info de cierre como derechos de autor -->
+      &copy; 2026 Rutas en Voge Rally 300
+      <!-- &copy; es una "entidad HTML": una forma de escribir el símbolo © sin escribirlo
+           directamente en el teclado -->
+    </footer>
+  </div>
+</body>
+
+</html>

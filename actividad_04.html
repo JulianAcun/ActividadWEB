@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>Rodando Fuerte - Revista de Motociclismo</title>
+  <link rel="stylesheet" href="./css/styles04.css" />
+</head>
+
+<body>
+  <div class="header">
+    <!-- .header: barra superior fija, siempre visible aunque se haga scroll (ver "position: fixed"
+         en el CSS). Se usa un <div> con clase en vez de la etiqueta semántica <header> porque este
+         bloque necesita comportarse como una barra flotante de navegación, no como el encabezado
+         de contenido de la página (ese rol lo cumple más abajo el <h1> dentro de .main-story) -->
+    <div class="header-inner">
+      <div class="logo">RODANDO FUERTE</div>
+      <!-- Logo hecho solo con texto y CSS (mayúsculas + tipografía + espaciado), para no
+           depender de un archivo de imagen que aún no existe -->
+      <nav class="nav">
+        <!-- Aquí sí se usa la etiqueta semántica <nav> porque este bloque SÍ es navegación -->
+        <a href="index.html">inicio</a> / <a href="">rutas</a> / <a href="">galería</a> / <a href="">acerca de</a> / <a href="">contacto</a>
+        <!-- Los "/" entre enlaces son solo texto separador, no tienen función, es un recurso
+             visual común en menús de una sola línea -->
+      </nav>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div class="header-spacer"></div>
+    <!-- <div> vacío que ocupa espacio (ver height en el CSS) solo para "empujar" el contenido
+         hacia abajo y que no quede tapado por el header fijo, que flota encima de todo -->
+
+    <div class="main-story">
+      <!-- .main-story: la noticia/artículo principal, destacado en grande -->
+      <h1><a href="">Rodando la Voge Rally 300 por Boyacá: la ruta a Villa de Leyva</a></h1>
+      <!-- El <h1> completo es clickeable porque el <a> envuelve todo el texto, un patrón común
+           en portadas de noticias/revistas para que el título entero sea el enlace al artículo -->
+      <div class="intro">
+        <p class="date">27 JULIO 2026</p>
+        <p>
+          Salimos de Bogotá temprano en la Voge Rally 300 hacia Villa de Leyva,
+          combinando vía pavimentada y tramos destapados. La suspensión de largo
+          recorrido y la posición de manejo hacen que los 150 km se sientan
+          cómodos incluso con equipaje.
+        </p>
+        <p>
+          En el camino paramos en varios pueblos de Cundinamarca antes de llegar
+          al empedrado colonial de Villa de Leyva. <a href="">Continuar leyendo...</a>
+        </p>
+      </div>
+    </div>
+    <!-- .main-story -->
+
+    <div class="more-articles">
+      <!-- .more-articles: cuadrícula con enlaces a otras rutas/publicaciones -->
+      <h2>Más Rutas</h2>
+      <p class="nota-fotos">Las fotos son de referencia del modelo, no fueron tomadas en cada lugar.</p>
+
+      <div class="article-card">
+        <!-- Cada "article-card" es una miniatura: imagen + dos enlaces relacionados. Se usa
+             <div> en vez de <article> aquí porque, a diferencia de las rutas de la actividad 02,
+             estas tarjetas son solo accesos rápidos/resumen, no contienen el contenido completo -->
+        <img src="./images/guatavita.jpg" alt="Voge Rally 300, foto de referencia del modelo" width="220" height="125" />
+        <!-- width y height fijos reservan el espacio de la imagen ANTES de que cargue, así el
+             resto de la página no "salta" mientras la foto termina de descargarse -->
+        <p><a href="">Guatavita: mito muisca y carretera destapada</a></p>
+        <p><a href="">La Calera y Guasca: rutas cortas para probar la moto un fin de semana</a></p>
+      </div>
+
+      <div class="article-card">
+        <img src="./images/zipaquira.jpg" alt="Voge Rally 300, foto de referencia del modelo" width="220" height="125" />
+        <p><a href="">Zipaquirá: la Catedral de Sal en dos ruedas</a></p>
+        <p><a href="">Chía, Sesquilé y Usme (pueblo): paradas cortas cerca de la ciudad</a></p>
+      </div>
+    </div>
+    <!-- .more-articles -->
+  </div>
+  <!-- .wrapper -->
+
+  <div class="footer">
+    <p>
+      <a href="">Información Legal</a> | <a href="">Políticas de Privacidad</a> |
+      <a href="">Copyright &copy; Rodando Fuerte 2026</a>
+    </p>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Presentación - Actividades Julian Acuña</title>
+
+  <style>
+    /* Estilos en línea porque esta es una página "envoltorio" aparte de las 4 actividades,
+       no forma parte de ellas. Paleta de marca TEKI: negro, rojo y blanco */
+
+    * {
+      box-sizing: border-box; /* padding y border se cuentan dentro del ancho, no se suman aparte */
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #1a1a1a;
+    }
+
+    /* ============================================
+       BARRA SUPERIOR
+       ============================================ */
+    .topbar {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 16px 24px;
+      border-bottom: 4px solid #d7192d; /* Acento rojo de marca */
+    }
+
+    .topbar h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .topbar p {
+      margin: 4px 0 0 0;
+      font-size: 14px;
+      color: #cccccc;
+    }
+
+    /* ============================================
+       PESTAÑAS (TABS) DE NAVEGACIÓN
+       ============================================ */
+    .tabs {
+      display: flex; /* Coloca los 4 botones en fila */
+      flex-wrap: wrap; /* En pantallas angostas los botones que no quepan bajan a otra línea */
+      gap: 8px;
+      background-color: #ffffff;
+      padding: 12px 24px;
+      border-bottom: 1px solid #dddddd;
+    }
+
+    .tab-button {
+      /* Los botones se ven como pestañas, no como <button> por defecto del navegador */
+      border: 2px solid #000000;
+      background-color: #ffffff;
+      color: #000000;
+      font-family: inherit; /* Los <button> no heredan la fuente de la página por defecto; se fuerza a que use la misma que el resto */
+      font-size: 14px;
+      font-weight: bold;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer; /* Cambia el ícono del mouse a "manito" al pasar por encima */
+      transition: background-color 0.15s ease, color 0.15s ease; /* Anima el cambio de color en vez de que sea instantáneo */
+    }
+
+    .tab-button:hover {
+      background-color: #f0f0f0;
+    }
+
+    .tab-button.active {
+      /* .active se agrega/quita con JavaScript según la pestaña seleccionada */
+      background-color: #d7192d;
+      border-color: #d7192d;
+      color: #ffffff;
+    }
+
+    /* ============================================
+       DESCRIPCIÓN DE LA ACTIVIDAD ACTIVA
+       ============================================ */
+    .tab-description {
+      padding: 14px 24px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #dddddd;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .tab-description strong {
+      color: #d7192d;
+    }
+
+    /* ============================================
+       ÁREA DONDE SE MUESTRA LA ACTIVIDAD
+       ============================================ */
+    .viewer {
+      padding: 20px 24px 30px 24px;
+    }
+
+    .viewer-frame-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border: 1px solid #dddddd;
+      border-radius: 8px;
+      overflow: hidden; /* Recorta las esquinas del iframe interno para que respeten el border-radius del contenedor */
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    }
+
+    .viewer-frame-wrapper iframe {
+      width: 100%;
+      height: 75vh; /* 75% de la altura visible de la ventana, para que el iframe siempre se vea completo sin importar el tamaño de pantalla */
+      min-height: 500px;
+      border: 0; /* Quita el borde 3D que traen los iframes por defecto */
+      display: block; /* Los iframe son "inline" por defecto y dejan un pequeño espacio fantasma debajo; display:block lo elimina */
+    }
+
+    .viewer-actions {
+      max-width: 1100px;
+      margin: 10px auto 0 auto;
+      text-align: right;
+    }
+
+    .viewer-actions a {
+      color: #555555;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .viewer-actions a:hover {
+      color: #d7192d;
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: 700px) {
+      /* Ajustes para pantallas pequeñas (celulares) */
+      .topbar h1 {
+        font-size: 18px;
+      }
+
+      .tab-button {
+        flex: 1 1 auto; /* Los botones crecen para repartirse el ancho disponible en vez de quedar diminutos */
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <!-- Barra de marca fija arriba, igual concepto que el header de la actividad 04 pero
+         mucho más simple: aquí no necesita quedarse pegada al hacer scroll -->
+    <h1>Actividades PW - Julian Acuña</h1>
+    <p>Presentación unificada de las 4 actividades (TEKI y Rutas en Voge Rally 300)</p>
+  </div>
+
+  <nav class="tabs" id="tabs">
+    <!-- Cada botón NO es un <a>: no navega a otra página, solo cambia qué actividad se
+         muestra dentro del iframe de abajo mediante JavaScript. Por eso se usa <button>,
+         que es la etiqueta semánticamente correcta para "algo que dispara una acción en la
+         misma página", en vez de <a>, que es para "ir a otro lugar" -->
+    <button type="button" class="tab-button active" data-src="actividad_01.html"
+      data-desc="<strong>Actividad 01 — TEKI Soporte Técnico:</strong> página básica con título, párrafos, lista de servicios, tabla de horarios por sede y formulario de agendamiento.">
+      Actividad 01 · TEKI
+    </button>
+    <button type="button" class="tab-button" data-src="actividad_02.html"
+      data-desc="<strong>Actividad 02 — Rutas en Voge Rally 300:</strong> uso de etiquetas semánticas de HTML5 (header, nav, section, article, figure, aside, footer) para mostrar rutas destacadas.">
+      Actividad 02 · Rutas
+    </button>
+    <button type="button" class="tab-button" data-src="actividad_03.html"
+      data-desc="<strong>Actividad 03 — Pueblos Recorridos en Moto:</strong> tarjetas de información y un mapa de Google Maps incrustado con un iframe.">
+      Actividad 03 · Pueblos
+    </button>
+    <button type="button" class="tab-button" data-src="actividad_04.html"
+      data-desc="<strong>Actividad 04 — Rodando Fuerte:</strong> maqueta tipo revista/portal de noticias, con encabezado fijo y cuadrícula de artículos con CSS Grid.">
+      Actividad 04 · Revista
+    </button>
+  </nav>
+
+  <p class="tab-description" id="tab-description">
+    <strong>Actividad 01 — TEKI Soporte Técnico:</strong> página básica con título, párrafos, lista de
+    servicios, tabla de horarios por sede y formulario de agendamiento.
+  </p>
+
+  <div class="viewer">
+    <div class="viewer-frame-wrapper">
+      <iframe id="activity-frame" src="actividad_01.html" title="Vista previa de la actividad seleccionada"></iframe>
+      <!-- Este es el ÚNICO iframe de la página: en vez de tener 4 iframes (uno por actividad)
+           y mostrar/ocultar cada uno, se reutiliza el mismo cambiándole el atributo "src".
+           Es más liviano porque el navegador solo carga una actividad a la vez -->
+    </div>
+    <p class="viewer-actions">
+      <a id="open-new-tab" href="actividad_01.html" target="_blank">Abrir esta actividad en una pestaña nueva ↗</a>
+      <!-- Útil en la presentación: si algo no se ve bien dentro del recuadro pequeño, se
+           puede abrir la actividad completa, tal como la vería el profesor por separado -->
+    </p>
+  </div>
+
+  <script>
+    // Todas las pestañas (los 4 botones de arriba)
+    const tabs = document.querySelectorAll('.tab-button');
+    // El iframe que muestra la actividad seleccionada
+    const frame = document.getElementById('activity-frame');
+    // El párrafo de descripción, que cambia según la pestaña activa
+    const description = document.getElementById('tab-description');
+    // El enlace "Abrir en pestaña nueva", que también debe apuntar a la actividad activa
+    const openNewTab = document.getElementById('open-new-tab');
+
+    // addEventListener registra una función que se ejecuta cada vez que ocurre el evento
+    // indicado ("click") sobre ESE elemento en particular. forEach recorre los 4 botones y le
+    // agrega el mismo comportamiento a cada uno, sin repetir el código 4 veces.
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        // data-src y data-desc son "atributos de datos" personalizados definidos en el HTML
+        // de cada botón; dataset los expone en JavaScript como propiedades normales
+        const nuevaSrc = tab.dataset.src;
+
+        frame.src = nuevaSrc;          // Cambia qué actividad muestra el iframe
+        openNewTab.href = nuevaSrc;    // Sincroniza el enlace de "abrir en pestaña nueva"
+        description.innerHTML = tab.dataset.desc; // Actualiza el texto descriptivo
+
+        // Quita la clase "active" de TODOS los botones y se la vuelve a poner solo al que
+        // se acaba de hacer clic, para que el resaltado rojo siempre marque la pestaña correcta
+        tabs.forEach(function (otro) {
+          otro.classList.remove('active');
+        });
+        tab.classList.add('active');
+      });
+    });
+  </script>
+</body>
+
+</html>

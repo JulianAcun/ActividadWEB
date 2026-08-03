@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- Declaración del tipo de documento: le indica al navegador que este archivo usa HTML5.
+     Sin esta línea, navegadores antiguos podrían interpretar la página en "modo raro" (quirks mode) -->
+<html lang="es">
+<!-- Elemento raíz de la página: TODO el contenido va anidado dentro de <html>.
+     El atributo lang="es" indica que el contenido está en español (ayuda a lectores de pantalla
+     y a que el traductor del navegador no ofrezca traducir algo que ya está en español) -->
+
+<head>
+  <!-- La sección <head> contiene información SOBRE la página (metadata) que NO se muestra
+       directamente en el cuerpo visible -->
+
+  <meta charset="UTF-8">
+  <!-- Define la codificación de caracteres para que tildes y ñ se vean correctamente.
+       Debe ir dentro de los primeros 1024 bytes del documento por eso siempre va de primero -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Hace que la página se adapte al tamaño de pantalla de celulares y tablets:
+       width=device-width usa el ancho real del dispositivo, initial-scale=1.0 evita que el
+       navegador móvil haga zoom automático simulando una pantalla de escritorio -->
+
+  <meta name="color-scheme" content="light">
+  <!-- Evita que el navegador invierta los colores en modo oscuro automático (algunos navegadores
+       oscurecen páginas que no declaran esquema de color, y eso rompía el contraste negro/rojo/blanco) -->
+
+  <title>TEKI - Soporte Técnico</title>
+  <!-- Texto que aparece en la pestaña del navegador y en resultados de buscadores -->
+
+  <link rel="stylesheet" href="./css/styles01.css" />
+  <!-- Vincula el archivo de estilos CSS externo que da diseño a esta página. rel="stylesheet"
+       le dice al navegador qué tipo de recurso es; href apunta a la ruta relativa del archivo -->
+</head>
+
+<body>
+  <!-- La sección <body> contiene todo el contenido visible de la página: texto, listas,
+       tabla y formulario -->
+
+  <h1>TEKI - Soporte Técnico</h1>
+  <!-- Encabezado principal (nivel 1): debe haber solo un <h1> por página, es el título más
+       importante tanto visualmente como para SEO/accesibilidad -->
+
+  <p>
+    En TEKI ofrecemos soporte técnico especializado para todo tipo de
+    dispositivos tecnológicos, incluyendo celulares, computadoras e
+    impresoras.
+  </p>
+  <!-- Párrafo introductorio: presenta la empresa y a qué se dedica -->
+
+  <p>
+    Además, brindamos soluciones tecnológicas a la medida, como
+    desarrollo e instalación de software y configuración de redes,
+    para hogares y empresas.
+  </p>
+  <!-- Segundo párrafo: complementa la información con los servicios adicionales -->
+
+  <ul>
+    <!-- <ul> = "unordered list" (lista sin orden): muestra los servicios como viñetas porque
+         el orden en que aparecen no importa. Si el orden importara (ej. pasos de un proceso)
+         se usaría <ol>, "ordered list", que numera automáticamente -->
+    <li>Soporte Técnico para Celulares</li>
+    <li>Soporte Técnico para Computadoras</li>
+    <li>Soporte Técnico para Impresoras</li>
+    <li>Instalación de Redes</li>
+    <li>Soluciones de Software</li>
+  </ul>
+
+  <table>
+    <!-- Tabla: organiza los servicios y sus horarios de atención por sede.
+         Cada <tr> es una fila ("table row"); dentro van celdas <th> (encabezado) o <td> (dato) -->
+
+    <tr class="head">
+      <!-- Fila de encabezado de la tabla (nombres de las columnas). La primera celda queda vacía
+           porque está sobre la columna de nombres de servicio, que no necesita título -->
+      <th></th>
+      <th>Bogotá</th>
+      <th>Medellín</th>
+      <th>Cali</th>
+    </tr>
+
+    <tr>
+      <!-- Cada fila usa un <th> al inicio (no un <td>) porque ese texto también es un
+           "encabezado", esta vez de la fila: describe de qué servicio son los datos que siguen -->
+      <th>Soporte a Celulares</th>
+      <td>Lun - Vie<br />8am - 6pm</td>
+      <!-- <br /> fuerza un salto de línea DENTRO de la misma celda, sin abrir un párrafo nuevo -->
+      <td>Lun - Vie<br />8am - 5pm</td>
+      <td>Lun - Vie<br />9am - 5pm</td>
+    </tr>
+
+    <tr class="even">
+      <!-- La clase "even" (par) alterna el color de fondo de la fila (efecto cebra) para que sea
+           más fácil seguir cada renglón con la vista; se define en el CSS, no es un atributo nativo de HTML -->
+      <th>Soporte a Computadoras</th>
+      <td>Lun - Sab<br />8am - 6pm</td>
+      <td>Lun - Sab<br />8am - 5pm</td>
+      <td>Lun - Vie<br />9am - 5pm</td>
+    </tr>
+
+    <tr>
+      <th>Soporte a Impresoras</th>
+      <td>Mar, Jue<br />10am - 4pm</td>
+      <td>Mar, Jue<br />10am - 4pm</td>
+      <td>Mié<br />10am - 2pm</td>
+    </tr>
+
+    <tr class="even">
+      <th>Instalación de Redes</th>
+      <td>Con cita previa</td>
+      <td>Con cita previa</td>
+      <td>Con cita previa</td>
+    </tr>
+  </table>
+
+  <form action="#" method="get">
+    <!-- <form> agrupa todos los campos que se envían juntos cuando el usuario da clic en "Agendar".
+         action="#" es solo de ejemplo porque no hay un servidor real que reciba los datos;
+         method="get" significa que, si tuviera un destino real, los datos viajarían visibles
+         en la URL (por eso "get" nunca se usa para contraseñas ni datos sensibles; para eso existe "post") -->
+
+    <fieldset>
+      <!-- <fieldset> agrupa visualmente los campos relacionados del formulario dentro de un
+           recuadro, ayuda tanto al diseño como a la accesibilidad (lectores de pantalla anuncian
+           el grupo completo) -->
+      <legend>Agende su cita de soporte técnico:</legend>
+      <!-- <legend> es el título descriptivo del <fieldset>, se muestra "incrustado" en el borde -->
+
+      <p>
+        <label class="title" for="name">Su Nombre:</label>
+        <!-- El atributo for="name" conecta esta etiqueta con el input que tiene id="name":
+             al hacer clic en el texto "Su Nombre:" el foco salta directo al campo, y los
+             lectores de pantalla leen la etiqueta cuando el usuario llega al campo -->
+        <input type="text" name="name" id="name"><br />
+        <label class="title" for="email">Su correo:</label>
+        <input type="text" name="email" id="email">
+      </p>
+      <!-- Campos de texto para capturar nombre y correo del cliente -->
+
+      <p>
+        <label for="location" class="title">Sede más cercana:</label>
+        <select name="location" id="location">
+          <!-- <select> + <option>: lista desplegable donde el usuario elige UNA única sede.
+               El atributo "value" es lo que realmente se enviaría al servidor, mientras que
+               el texto entre las etiquetas es lo que ve el usuario -->
+          <option value="bo">Bogotá</option>
+          <option value="me">Medellín</option>
+          <option value="ca">Cali</option>
+        </select>
+      </p>
+
+      <span class="title">¿Es cliente frecuente?</span>
+      <label><input type="radio" name="frequent" value="si" /> Si</label>
+      <label><input type="radio" name="frequent" value="no" /> No</label>
+      <!-- Botones de radio: al compartir el mismo name="frequent" el navegador los trata como
+           un solo grupo, permitiendo elegir solo UNA de las dos opciones a la vez -->
+    </fieldset>
+
+    <div class="submit">
+      <input type="submit" value="Agendar" />
+      <!-- type="submit" convierte este input en el botón que envía el formulario completo;
+           "value" es el texto que se muestra sobre el botón -->
+    </div>
+  </form>
+
+</body>
+</html>
